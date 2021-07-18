@@ -10,7 +10,7 @@ ODIR=obj
 _DEPS = logs.h
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = logs.o  main.o 
+_OBJ = logs.o main.o 
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 

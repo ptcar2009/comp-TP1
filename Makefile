@@ -2,6 +2,8 @@ IDIR=inc
 CC=g++
 CFLAGS=-I$(IDIR)
 SDIR=src
+EXEC_NAME=montador
+BDIR=bin
 
 ODIR=obj
 
@@ -12,11 +14,12 @@ _OBJ = logs.o  main.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 
-$(ODIR)/%.o: $(ODIR) $(SDIR)/%.cpp
+$(ODIR)/%.o: $(SDIR)/%.cpp
 	$(CC) -c -o $@ $< $(CFLAGS)
 
+build: $(BDIR) $(ODIR) $(BDIR)/$(EXEC_NAME)
 
-bin/montador: $(BDIR) $(OBJ)
+$(BDIR)/$(EXEC_NAME): $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 
 .PHONY: clean

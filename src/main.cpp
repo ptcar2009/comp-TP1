@@ -53,6 +53,9 @@ int main(int argc, char** argv) {
   std::vector<std::string> first_pass = std::vector<std::string>();
   logger.INFO("initiating first pass");
   for (std::string line; getline(buffer, line);) {
+    if (line.find_first_not_of(" \t\n") == line.npos) {
+      continue;
+    }
     logger.DEBUG("line:", line);
     std::stringstream buf;
     buf.str(line);

@@ -72,6 +72,10 @@ int main(int argc, char **argv)
   logger.INFO("initiating first pass");
   for (std::string line; getline(buffer, line);)
   {
+    if (line.find_first_not_of(" \t\n") == line.npos)
+    {
+      continue;
+    }
     logger.DEBUG("line:", line);
     std::stringstream buf;
     buf.str(line);

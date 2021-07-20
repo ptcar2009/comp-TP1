@@ -1,0 +1,36 @@
+; reads and evaluates first two numbers
+READ R0
+READ R1
+COPY R2 R0
+SUB R0 R1
+JN 6            ; negative result if R0 < R1
+    PUSH R2     ; stores value received in R0 if its bigger first
+    PUSH R1
+JUMP 4
+    PUSH R1     ; stores value received in R1 if its bigger first
+    PUSH R2
+; REMOVE THIS COMMENT TO GET EMPTY LINE BUG
+READ R0
+POP R1
+COPY R2 R0
+SUB R0 R1
+JN 24           ; negative result if R0 < R1
+    COPY R0 R2
+    POP R3
+    SUB R0 R3
+    JN 6
+        PUSH R2
+        PUSH R3
+    JUMP 4
+        PUSH R3
+        PUSH R2
+    PUSH R1  
+JUMP 4
+    PUSH R1     ; stores value received in R1 if its bigger first
+    PUSH R2
+; REMOVE THIS COMMENT TO GET EMPTY LINE BUG
+POP R3
+POP R3
+WRITE R3
+HALT
+END

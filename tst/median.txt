@@ -1,0 +1,85 @@
+; reads and evaluates first two numbers
+READ R0
+READ R1
+COPY R2 R0
+SUB R0 R1
+JN 6            ; negative result if R0 < R1
+    PUSH R2     ; stores value received in R0 if its bigger first
+    PUSH R1
+JUMP 4
+    PUSH R1     ; stores value received in R1 if its bigger first
+    PUSH R2
+
+READ R0         ; reads 3rd input and compares it with the others
+POP R1
+COPY R2 R0
+SUB R0 R1
+JN 24           ; negative result if R0 < R1
+    COPY R0 R2
+    POP R3
+    SUB R0 R3
+    JN 6
+        PUSH R2
+        PUSH R3
+    JUMP 4
+        PUSH R3
+        PUSH R2
+    PUSH R1  
+JUMP 4
+    PUSH R1     
+    PUSH R2
+
+READ R0         ; reads 4th input and compares it with the others
+POP R1
+COPY R2 R0
+SUB R0 R1
+JN 48           ; negative result if R0 < R1
+    COPY R0 R2
+    POP R3
+    SUB R0 R3
+    JN 30
+        POP R0
+        PUSH R3
+        COPY R3 R2
+        SUB R3 R0
+        JN 8
+            POP R3
+            PUSH R2
+            PUSH R0
+        JUMP 6
+            POP R3
+            PUSH R0
+            PUSH R2
+        PUSH R3
+    JUMP 4
+        PUSH R3
+        PUSH R2
+    PUSH R1  
+JUMP 4
+    PUSH R1
+    PUSH R2
+
+READ R0         ; reads 5th input and compares it with the others
+POP R1
+COPY R2 R0
+SUB R0 R1
+JN 32
+    COPY R0 R2
+    POP R1
+    SUB R0 R1
+    JN 18
+        COPY R0 R2
+        POP R1
+        SUB R0 R1
+        JN 4
+            WRITE R1
+        JUMP 2
+            WRITE R2
+    JUMP 2
+        WRITE R1
+JUMP 4
+    POP R3
+    WRITE R3
+
+HALT
+END

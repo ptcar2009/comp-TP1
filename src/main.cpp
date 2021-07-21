@@ -154,19 +154,14 @@ int main(int argc, char **argv)
       }
     }
   }
-  logger.INFO("compilation complete, generation .mv file");
-  std::string outputFile = inputFile.substr(0, inputFile.find(".")) + ".mv";
-  std::ofstream outfile(outputFile);
 
-  outfile << "MV-EXE\n"
-          << std::endl;
+  logger.INFO("compilation complete, outputing to stdout");
+  logger.DEBUG("printing header");
+  std::cout << "MV-EXE" << std::endl;
 
-  outfile << (i - 1) << " 100 999 100\n"
-          << std::endl;
+  logger.DEBUG("printing program information.", "size:", i - 1);
+  std::cout << (i - 1) << " 100 999 100" << std::endl;
 
-  outfile << compiled.rdbuf() << std::endl;
-
-  logger.DEBUG(outputFile + " generated");
-
-  outfile.close();
+  logger.DEBUG("printing compiled program");
+  std::cout << compiled.rdbuf() << std::endl;
 }

@@ -1,0 +1,8 @@
+main: READ R0
+    STORE R0 a
+    CALL add100
+    WRITE R0
+    HALT
+const100: WORD 100
+a: WORD -1
+END

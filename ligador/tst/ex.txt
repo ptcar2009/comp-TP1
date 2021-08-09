@@ -1,9 +1,0 @@
-READ R0
-LOAD R1 const100
-ADD R0 R1
-WRITE R0 ; some comment
-
-
-HALT
-const100: WORD 100
-END

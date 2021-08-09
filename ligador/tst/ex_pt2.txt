@@ -1,0 +1,5 @@
+add100: LOAD R0 a
+    LOAD R1 const100
+    ADD R0 R1
+    RET
+END

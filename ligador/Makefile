@@ -1,6 +1,6 @@
 IDIR=inc
 CC=g++
-CFLAGS=-I$(IDIR)
+CFLAGS=-I$(IDIR) -g
 SDIR=src
 EXEC_NAME=ligador
 BDIR=bin
